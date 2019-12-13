@@ -1,19 +1,4 @@
 /**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
-*/
-
-/**
  * Define Global Variables
  *
 */
@@ -39,14 +24,16 @@ function navMenu(section) {
 }
 
 //add the links to the nav list
-function addLink(links, id) {
+function addLink(link, id) {
     const listItem = document.createElement('li');
-    listItem.appendChild(links);
+    listItem.appendChild(link);
 
     listItem.classList.add('menu__link');
 
+    listItem.id = `menu-${id}`;
+
     //use click to scroll to section
-    links.addEventListener('click', function() {
+    link.addEventListener('click', function() {
         document.getElementById(id).scrollIntoView(
             {behavior: 'smooth'} );
     });
@@ -63,6 +50,20 @@ function removeActive(section) {
 
 function showActive(section) {
     section.classList.add('your-active-class');
+}
+
+//Highlight active section
+function activeMenu(section) {
+    const menuItems = document.getElementsByTagName('li');
+    const activeItem = document.getElementById(`menu-${section}`);
+
+    //Remove underline from the menu items
+    for (menuItem of menuItems) {
+        menuItem.style.textDecoration = 'none';
+    }
+
+//Add underline to active section
+    activeItem.style.textDecoration = 'underline';
 }
 
 //Check to see is section is in viewport. jQuery function help from Stephen Irving here: https://coderwall.com/p/fnvjvg/jquery-test-if-element-is-in-viewport
@@ -96,7 +97,8 @@ window.addEventListener('scroll', function() {
         if (isInView(section)) {
             console.log(section);
             removeActive();
-            showActive();
+            showActive(section);
+            activeMenu(section.id);
         }
     }
 });
