@@ -69,15 +69,12 @@ function activeMenu(section) {
 //Check to see is section is in viewport. jQuery function help from Stephen Irving here: https://coderwall.com/p/fnvjvg/jquery-test-if-element-is-in-viewport
 
 const isInView = (element) => {
-    const w = window,
-    elBounds = element.getBoundingClientRect(),
-    scrollTop = w.pageYOffset,
-    elTop = elBounds.y + scrollTop;
+    const elBounds = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const elTop = (elBounds.top >= 0) && ((elBounds.top) <= (elBounds.height / 3));
 
-    return(
-        elTop < (w.innerHeight + scrollTop) &&
-        elTop > (scrollTop - elBounds.height));
-}
+    return(elTop);
+};
 
 // build the nav
 for (const section of sections) {
