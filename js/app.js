@@ -45,7 +45,7 @@ const resetActive = function() {
 const selectActive = function() {
     for(let i = 0; i < navSections.length; i++) {
     const sectionArea = navSections[i].getBoundingClientRect();
-    if(sectionArea.top >= -70 && sectionArea.top <= 70) {
+    if(sectionArea.top >= -40 && sectionArea.top <= 40) {
         return navSections[i];
     }
     }

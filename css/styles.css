@@ -47,7 +47,7 @@ p {
 
 /* ---- Layout Rules ---- */
 main {
-    margin: 10vh 1em 10vh;
+    margin: 8vh 1em 8vh;
 }
 
 .main-hero {
@@ -57,13 +57,13 @@ main {
 
 section {
     position: relative;
-    min-height: 90vh;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    min-height: 50vh;
+
+
 }
 
 section .toggle {
-    margin-bottom: 0;
+    margin: 0 32px;
 }
 
 
