@@ -91,9 +91,13 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar__menu .menu__link:active {
+    background: #0e3a57;
+}
+
 /* Header Styles */
 .page__header {
-    background: #abd5f1;
+    background: #92b6ce;
     position: fixed;
     top: 0;
     width: 100%;
@@ -113,7 +117,6 @@ section {
 .page__footer p{
     color: #fff;
 }
-
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */

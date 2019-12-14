@@ -4,33 +4,21 @@
 */
 const navbar = document.getElementById('navbar__list');
 const menu = document.getElementsByClassName('menu__link');
-const sections = document.getElementsByTagName('section');
+const navSections = document.getElementsByTagName('section');
 
-/**
- * End Global Variables
- * Start Helper Functions
- *
-*/
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
-*/
 //This gets the text to add to navbar
-function navMenu(section) {
+const navMenu = function(section) {
     return document.createTextNode(section.getAttribute('data-nav'));
 }
 
 //add the links to the nav list
-function addLink(link, id) {
-    const listItem = document.createElement('li');
-    listItem.appendChild(link);
+const menuLink = function(link, id) {
+    const menuItem = document.createElement('li');
+    menuItem.appendChild(link);
 
-    listItem.classList.add('menu__link');
+    menuItem.classList.add('menu__link');
 
-    listItem.id = `menu-${id}`;
+    menuItem.id = `menu-${id}`;
 
     //use click to scroll to section
     link.addEventListener('click', function() {
@@ -38,33 +26,41 @@ function addLink(link, id) {
             {behavior: 'smooth'} );
     });
 
-    navbar.appendChild(listItem);
+    navbar.appendChild(menuItem);
 }
 
+const removeActive = function() {
+    for(i=0; i < navSections.length; i++) {
+        navSections[i].classList.remove('your-active-class');
+    }
+};
 
-function removeActive(section) {
-    for(const section of sections) {
-    section.classList.remove('your-active-class');
-}
-}
+const resetActive = function() {
+    const navLink = navbar.querySelectorAll('a');
+    for(i = 0; i < navSections.length; i++) {
+        navLink[i].classList.remove('your-active-class');
+    }
+};
 
-function showActive(section) {
-    section.classList.add('your-active-class');
-}
+const selectActive = function() {
+    for(let i = 0; i < navSections.length; i++) {
+    const sectionArea = navSections[i].getBoundingClientRect();
+    if(sectionArea.top >= -50 && sectionArea.top <= 50) {
+        return navSections[i];
+    }
+    }
+};
 
 //Highlight active section
-function activeMenu(section) {
-    const menuItems = document.getElementsByTagName('li');
-    const activeItem = document.getElementById(`menu-${section}`);
+// function activeMenu(section) {
+//     let menuLinks = document.getElementsByTagName('li');
+//     let activeLink = document.getElementById(`menu-${section}`);
 
-    //Remove underline from the menu items
-    for (menuItem of menuItems) {
-        menuItem.style.textDecoration = 'none';
-    }
-
-//Add underline to active section
-    activeItem.style.textDecoration = 'underline';
-}
+//     for(menuLink of menuLinks) {
+//         menuLink.style.textDecoration = 'none';
+//     }
+//     activeLink.style.textDecoration = 'underline overline';
+// }
 
 //Check to see is section is in viewport. jQuery function help from Stephen Irving here: https://coderwall.com/p/fnvjvg/jquery-test-if-element-is-in-viewport
 
@@ -77,7 +73,7 @@ const isInView = (element) => {
 };
 
 // build the nav
-for (const section of sections) {
+for (const section of navSections) {
 //create the a links
     const links = document.createElement('a');
 //create the link text
@@ -85,34 +81,18 @@ for (const section of sections) {
 
     const id = section.id
     links.appendChild(navLinks);
-    addLink(links, id);
+    menuLink(links, id);
 }
 
-// Add class 'active' to section when near top of viewport
+// Set 'active' when near top of viewport
 window.addEventListener('scroll', function() {
-    for (const section of sections) {
+    for (const section of navSections) {
         if (isInView(section)) {
-            console.log(section);
             removeActive();
-            showActive(section);
-            activeMenu(section.id);
+            selectActive();
+            //activeMenu(section.id);
         }
     }
 });
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
 
 
