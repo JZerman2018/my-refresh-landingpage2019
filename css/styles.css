@@ -19,7 +19,7 @@ body {
 }
 
 
-/* Typeography General*/
+/* Typography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
@@ -99,6 +99,12 @@ section .toggle {
 
 .navbar__menu .menu__link:active {
     background: #0e3a57;
+}
+
+@media only screen and (max-width: 460px) {
+    .navbar__menu ul {
+        font-size: 12px;
+    }
 }
 
 /* Header Styles */
