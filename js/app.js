@@ -45,7 +45,7 @@ const resetActive = function() {
 const selectActive = function() {
     for(let i = 0; i < navSections.length; i++) {
     const sectionArea = navSections[i].getBoundingClientRect();
-    if(sectionArea.top >= -50 && sectionArea.top <= 50) {
+    if(sectionArea.top >= -70 && sectionArea.top <= 70) {
         return navSections[i];
     }
     }
@@ -96,7 +96,7 @@ window.addEventListener('scroll', function() {
     }
 });
 // Add collapsible to sections as seen on w3schools.com
-const coll = document.getElementsByClassName('collapsible');
+const coll = document.getElementsByClassName('toggle');
 
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener('click', function() {
