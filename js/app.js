@@ -52,15 +52,15 @@ const selectActive = function() {
 };
 
 //Highlight active section
-// function activeMenu(section) {
-//     let menuLinks = document.getElementsByTagName('li');
-//     let activeLink = document.getElementById(`menu-${section}`);
+const activeMenu = function(section) {
+    let menuLists = document.getElementsByTagName('li');
+    let activeLink = document.getElementById(`menu-${section}`);
 
-//     for(menuLink of menuLinks) {
-//         menuLink.style.textDecoration = 'none';
-//     }
-//     activeLink.style.textDecoration = 'underline overline';
-// }
+    for(menuList of menuLists) {
+        menuList.style.textDecoration = 'none';
+    }
+    activeLink.style.textDecoration = 'underline overline';
+}
 
 //Check to see is section is in viewport. jQuery function help from Stephen Irving here: https://coderwall.com/p/fnvjvg/jquery-test-if-element-is-in-viewport
 
@@ -88,11 +88,24 @@ for (const section of navSections) {
 window.addEventListener('scroll', function() {
     for (const section of navSections) {
         if (isInView(section)) {
+            console.log(section);
             removeActive();
             selectActive();
-            //activeMenu(section.id);
+            activeMenu(section.id);
         }
     }
 });
+// Add collapsible to sections as seen on w3schools.com
+const coll = document.getElementsByClassName('collapsible');
 
-
+for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function() {
+        this.classList.toggle('active');
+        let content = this.nextElementSibling;
+        if(content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    });
+}
