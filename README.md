@@ -1,13 +1,11 @@
 # Landing Page Project
 
-## Table of Contents
+## Live Version
 
-* [Instructions](#instructions)
+* [Click Here](https://jzerman2018.github.io/my-refresh-landingpage2019/)
 
-## Instructions
+## Overview
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This was a starter project with some HTML and CSS styling to display a static version of the Landing Page project. I converted this project from a static project to an interactive one. This required modifying the HTML and CSS files, along with the JavaScript file.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The page navigation was built dynamically using JavaScript.
